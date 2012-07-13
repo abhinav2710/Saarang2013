@@ -64,10 +64,11 @@ public class EventInfoActivity extends Activity {
 
 		// Database part
 		myDbHelper = new DatabaseHelper(this);
-		//ca = new CalendarAdapter(this);
+		
+		
 
 		try {
-
+			ca = new CalendarAdapter(this);
 			myDbHelper.createDataBase();
 			myDbHelper.openDataBase();
 			Log.e("Event Id = ", eventid + "");

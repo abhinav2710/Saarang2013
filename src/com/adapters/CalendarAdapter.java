@@ -36,56 +36,54 @@ public class CalendarAdapter {
 	{
 		this.cnt = c;
 		
-		myDbHelper = new DatabaseHelper(this.cnt);
+
 		noEvents = gallery_manager.noEvents;
-
-		try {
-
-			myDbHelper.createDataBase();
-			myDbHelper.openDataBase();
-			for( int i=1; i<=noEvents; i++)
-			{
-				this.addEvent(i);
-			}
-			
-			
-			
-
-		} catch (IOException ioe)
-
-		{
-			Log.i("CalendarAdapter","DatabaseException");
-		}
-
+		
 	}
 	
-	public void addEvent(int eventId)
+	public void addEvent()
 	{
 		
-		name = gallery_manager.eventNameHash.get(eventId);
 		
-		mCursor = myDbHelper.fetchDescription(eventId);
-		introduction = mCursor.getString(3);
-		
-		if (introduction.equalsIgnoreCase("null")) {
+		/*if (introduction.equalsIgnoreCase("null")) {
 			introduction = "Sorry .. No introduction has been given for this events."
 					+ " Please Contact the Coordinator for details";
+		}*/
+		for (int i=1;i<=noEvents;i++)
+		{
+			myDbHelper = new DatabaseHelper(this.cnt);
+			name = gallery_manager.eventNameHash.get(i);
+			
+			
+	
+			try {
+	
+				myDbHelper.createDataBase();
+				myDbHelper.openDataBase();
+				mCursor = myDbHelper.fetchDescription(i);
+				introduction = mCursor.getString(3);
+	
+			} catch (IOException ioe)
+	
+			{
+				Log.i("CalendarAdapter","DatabaseException");
+			}
+	
+			
+			Calendar beginTime = Calendar.getInstance();
+			beginTime.set(2012, 0, 19, 7, 30);
+			Calendar endTime = Calendar.getInstance();
+			endTime.set(2012, 0, 19, 8, 30);
+			Intent intent = new Intent(Intent.ACTION_INSERT)
+			        .setData(Events.CONTENT_URI)
+			        .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, beginTime.getTimeInMillis())
+			        .putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endTime.getTimeInMillis())
+			        .putExtra(Events.TITLE, name)
+			        .putExtra(Events.DESCRIPTION,introduction);
+			        //.putExtra(Events.EVENT_LOCATION, "Location")
+					
+			cnt.startActivity(intent);
 		}
-		
-		
-		Calendar beginTime = Calendar.getInstance();
-		beginTime.set(2012, 0, 19, 7, 30);
-		Calendar endTime = Calendar.getInstance();
-		endTime.set(2012, 0, 19, 8, 30);
-		Intent intent = new Intent(Intent.ACTION_INSERT)
-		        .setData(Events.CONTENT_URI)
-		        .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, beginTime.getTimeInMillis())
-		        .putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endTime.getTimeInMillis())
-		        .putExtra(Events.TITLE, name)
-		        .putExtra(Events.DESCRIPTION,introduction);
-		        //.putExtra(Events.EVENT_LOCATION, "Location")
-				
-		cnt.startActivity(intent);
 		        
 		
 	}
