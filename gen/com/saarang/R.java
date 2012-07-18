@@ -9,24 +9,29 @@ package com.saarang;
 
 public final class R {
     public static final class anim {
-        public static final int slide_left_in=0x7f040000;
-        public static final int slide_left_out=0x7f040001;
+        public static final int push_left_in=0x7f040000;
+        public static final int push_left_out=0x7f040001;
+        public static final int push_right_in=0x7f040002;
+        public static final int push_right_out=0x7f040003;
+        public static final int push_up_in=0x7f040004;
+        public static final int slide_left_in=0x7f040005;
+        public static final int slide_left_out=0x7f040006;
     }
     public static final class attr {
     }
     public static final class dimen {
-        public static final int IconBotPadding=0x7f05000a;
-        public static final int IconDescriptionHeight=0x7f05000b;
-        public static final int IconDescriptionWidth=0x7f050009;
-        public static final int IconHeigth=0x7f050008;
-        public static final int IconLayoutHeight=0x7f050006;
-        public static final int IconWidth=0x7f050007;
-        public static final int ProShowbuttonWidth=0x7f050002;
-        public static final int SponsPicHeight=0x7f050004;
-        public static final int buttonHeight=0x7f050003;
-        public static final int buttonWidth=0x7f050001;
-        public static final int dip=0x7f050000;
-        public static final int mainWidth=0x7f050005;
+        public static final int IconBotPadding=0x7f06000a;
+        public static final int IconDescriptionHeight=0x7f06000b;
+        public static final int IconDescriptionWidth=0x7f060009;
+        public static final int IconHeigth=0x7f060008;
+        public static final int IconLayoutHeight=0x7f060006;
+        public static final int IconWidth=0x7f060007;
+        public static final int ProShowbuttonWidth=0x7f060002;
+        public static final int SponsPicHeight=0x7f060004;
+        public static final int buttonHeight=0x7f060003;
+        public static final int buttonWidth=0x7f060001;
+        public static final int dip=0x7f060000;
+        public static final int mainWidth=0x7f060005;
     }
     public static final class drawable {
         public static final int aerobotics=0x7f020000;
@@ -148,56 +153,57 @@ public final class R {
         public static final int zoomout=0x7f020074;
     }
     public static final class id {
-        public static final int Coord_Info=0x7f090018;
-        public static final int Events=0x7f090015;
-        public static final int Gallery01=0x7f09001c;
-        public static final int IconList=0x7f090006;
-        public static final int ImageView01=0x7f09001e;
-        public static final int ImageView02=0x7f09001f;
-        public static final int ImageView03=0x7f090020;
-        public static final int ImageView04=0x7f090021;
-        public static final int ImageView10=0x7f090027;
-        public static final int ImageView11=0x7f090028;
-        public static final int ImageView12=0x7f090029;
-        public static final int ImageView13=0x7f09002a;
-        public static final int ImageView14=0x7f09002b;
-        public static final int ImageView15=0x7f09002c;
-        public static final int ImageView16=0x7f09002d;
-        public static final int ImageView17=0x7f09002e;
-        public static final int ImageView5=0x7f090022;
-        public static final int ImageView6=0x7f090023;
-        public static final int ImageView7=0x7f090024;
-        public static final int ImageView8=0x7f090025;
-        public static final int ImageView9=0x7f090026;
-        public static final int Map=0x7f090014;
-        public static final int ProShow=0x7f090016;
-        public static final int Sponsors=0x7f090017;
-        public static final int TextView01=0x7f09001d;
-        public static final int coordlist=0x7f09002f;
-        public static final int coordlist1=0x7f090030;
-        public static final int cordEvent=0x7f090003;
-        public static final int cordname=0x7f090002;
-        public static final int cordphone=0x7f090004;
-        public static final int eventDescription=0x7f090011;
-        public static final int eventFormat=0x7f09000d;
-        public static final int eventName=0x7f090000;
-        public static final int event_category=0x7f090009;
-        public static final int iconDescription=0x7f090001;
-        public static final int intro=0x7f09000c;
-        public static final int introLabel=0x7f09000f;
-        public static final int linearLayout2=0x7f090008;
-        public static final int mapDisplay=0x7f090019;
-        public static final int myButton=0x7f090012;
-        public static final int my_list=0x7f090005;
-        public static final int relativeLayout1=0x7f090007;
-        public static final int search_menu=0x7f090031;
-        public static final int segmented_control=0x7f09000a;
-        public static final int segmented_control_gen1=0x7f09000b;
-        public static final int segmented_control_gen2=0x7f09000e;
-        public static final int tvName=0x7f090013;
-        public static final int vert=0x7f090010;
-        public static final int zoomIn=0x7f09001b;
-        public static final int zoomOut=0x7f09001a;
+        public static final int Coord_Info=0x7f0a0019;
+        public static final int Events=0x7f0a0016;
+        public static final int Gallery01=0x7f0a001d;
+        public static final int IconList=0x7f0a0006;
+        public static final int ImageView01=0x7f0a001f;
+        public static final int ImageView02=0x7f0a0020;
+        public static final int ImageView03=0x7f0a0021;
+        public static final int ImageView04=0x7f0a0022;
+        public static final int ImageView10=0x7f0a0028;
+        public static final int ImageView11=0x7f0a0029;
+        public static final int ImageView12=0x7f0a002a;
+        public static final int ImageView13=0x7f0a002b;
+        public static final int ImageView14=0x7f0a002c;
+        public static final int ImageView15=0x7f0a002d;
+        public static final int ImageView16=0x7f0a002e;
+        public static final int ImageView17=0x7f0a002f;
+        public static final int ImageView5=0x7f0a0023;
+        public static final int ImageView6=0x7f0a0024;
+        public static final int ImageView7=0x7f0a0025;
+        public static final int ImageView8=0x7f0a0026;
+        public static final int ImageView9=0x7f0a0027;
+        public static final int Map=0x7f0a0015;
+        public static final int ProShow=0x7f0a0017;
+        public static final int Sponsors=0x7f0a0018;
+        public static final int TextView01=0x7f0a001e;
+        public static final int coordlist=0x7f0a0030;
+        public static final int coordlist1=0x7f0a0031;
+        public static final int cordEvent=0x7f0a0003;
+        public static final int cordname=0x7f0a0002;
+        public static final int cordphone=0x7f0a0004;
+        public static final int eventDescription=0x7f0a0012;
+        public static final int eventFormat=0x7f0a000e;
+        public static final int eventName=0x7f0a0000;
+        public static final int event_category=0x7f0a000a;
+        public static final int gestures=0x7f0a0008;
+        public static final int iconDescription=0x7f0a0001;
+        public static final int intro=0x7f0a000d;
+        public static final int introLabel=0x7f0a0010;
+        public static final int linearLayout2=0x7f0a0009;
+        public static final int mapDisplay=0x7f0a001a;
+        public static final int myButton=0x7f0a0013;
+        public static final int my_list=0x7f0a0005;
+        public static final int relativeLayout1=0x7f0a0007;
+        public static final int search_menu=0x7f0a0032;
+        public static final int segmented_control=0x7f0a000b;
+        public static final int segmented_control_gen1=0x7f0a000c;
+        public static final int segmented_control_gen2=0x7f0a000f;
+        public static final int tvName=0x7f0a0014;
+        public static final int vert=0x7f0a0011;
+        public static final int zoomIn=0x7f0a001c;
+        public static final int zoomOut=0x7f0a001b;
     }
     public static final class layout {
         public static final int basic_event=0x7f030000;
@@ -213,24 +219,27 @@ public final class R {
         public static final int sponscategories=0x7f03000a;
     }
     public static final class menu {
-        public static final int menu=0x7f080000;
-        public static final int search_menu=0x7f080001;
+        public static final int menu=0x7f090000;
+        public static final int search_menu=0x7f090001;
+    }
+    public static final class raw {
+        public static final int gestures=0x7f050000;
     }
     public static final class string {
-        public static final int app_name=0x7f060001;
-        public static final int hello=0x7f060000;
+        public static final int app_name=0x7f070001;
+        public static final int hello=0x7f070000;
     }
     public static final class style {
-        public static final int ButtonText=0x7f070007;
-        public static final int FirstText=0x7f070003;
-        public static final int IconDescriptionText=0x7f070002;
-        public static final int TextLabel=0x7f070008;
-        public static final int button=0x7f070000;
-        public static final int buttonText=0x7f070001;
-        public static final int departmentpagetheme=0x7f070009;
-        public static final int eventText=0x7f070005;
-        public static final int headerText=0x7f070004;
-        public static final int headerText_mainmenu2=0x7f070006;
+        public static final int ButtonText=0x7f080007;
+        public static final int FirstText=0x7f080003;
+        public static final int IconDescriptionText=0x7f080002;
+        public static final int TextLabel=0x7f080008;
+        public static final int button=0x7f080000;
+        public static final int buttonText=0x7f080001;
+        public static final int departmentpagetheme=0x7f080009;
+        public static final int eventText=0x7f080005;
+        public static final int headerText=0x7f080004;
+        public static final int headerText_mainmenu2=0x7f080006;
     }
     public static final class styleable {
         /** Attributes that can be used with a Gallery1.

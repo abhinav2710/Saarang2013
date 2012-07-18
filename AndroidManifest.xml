@@ -55,6 +55,11 @@
         
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="android.intent.action.INSERT"/>
+                <action android:name="android.intent.action.EVENT_REMINDER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
+                
+            
             </intent-filter>
             
         </activity><activity android:name=".SponsActivity"

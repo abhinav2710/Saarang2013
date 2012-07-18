@@ -2,6 +2,11 @@
 	android:layout_width="fill_parent" android:layout_height="fill_parent"
 	android:orientation="vertical" android:background="#FFFFFF"
 	xmlns:android="http://schemas.android.com/apk/res/android">
+	<android.gesture.GestureOverlayView
+    android:id="@+id/gestures"
+    android:layout_width="fill_parent" 
+    android:layout_height="0dip"
+    android:layout_weight="1.0" />
 	<LinearLayout android:id="@+id/linearLayout2"
 		android:layout_width="fill_parent" android:layout_height="wrap_content"
 		android:background="@drawable/event_page_header" android:orientation="vertical"
@@ -35,6 +40,7 @@
    		</ImageButton>
 
 		</LinearLayout>
+		
 
 
 		<LinearLayout android:layout_width="fill_parent" android:orientation="vertical"

@@ -9,30 +9,29 @@ package com.saarang;
  * specific to each event
  * NEVER include prize money of each event and stuff cause that keeps changing and we pain you   
  */
-import android.app.Activity;
-import android.bluetooth.BluetoothClass.Device.Major;
-import android.os.Bundle;
 import java.io.IOException;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.database.Cursor;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.GestureDetector;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.adapters.CalendarAdapter;
 import com.database.DatabaseHelper;
 import com.utils.gallery_manager;
 
-import android.content.Intent;
-import android.database.Cursor;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-
-import android.widget.TextView;
-
-public class EventInfoActivity extends Activity {
+public class EventInfoActivity extends Activity implements OnGestureListener {
 
 	private int RowNum;
 	private DatabaseHelper myDbHelper;
@@ -48,6 +47,8 @@ public class EventInfoActivity extends Activity {
 	private ImageButton mEventFormat;
 	private int mPrize;
 	private TextView prizeMoney;
+	private GestureDetector gestureDetector;
+	private static final int SWIPE_MIN_DISTANCE = 120;
 	gallery_manager g = new gallery_manager();
 	CalendarAdapter ca;
 	@Override
@@ -55,12 +56,19 @@ public class EventInfoActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.event_description_layout);
 		
+		gestureDetector = new GestureDetector(this);
+		Log.i("EventInfoActivity", "Gesture Detector " + this.getClass());
+		
 		// Extracting the data from Intent
 		Bundle extras = getIntent().getExtras();
 		RowNum = extras.getInt("EventId", 1);
 		category = extras.getInt("MajorEventId");
 		eventid = g.eventids[category][RowNum];
 		Log.e("event id in the info page", "event Id " + RowNum);
+		Log.i("EventId", String.valueOf(RowNum));
+		Log.i("Category",String.valueOf(category));
+		
+		Log.e("EventInfoActivity","a");
 
 		// Database part
 		myDbHelper = new DatabaseHelper(this);
@@ -141,7 +149,15 @@ public class EventInfoActivity extends Activity {
 		inflater.inflate(R.menu.menu, menu);
 		return true;
 	}
-
+	
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		//overridePendingTransition(R.anim.zoom_enter,R.anim.zoom_exit);
+		finish();
+		super.onPause();
+	}
+	
 	private class EventListener implements OnClickListener {
 
 		public void onClick(View v) {
@@ -159,6 +175,81 @@ public class EventInfoActivity extends Activity {
 
 		}
 
+	}
+	
+	public boolean onTouchEvent(MotionEvent me)
+    {
+    	return gestureDetector.onTouchEvent(me);
+    }
+
+	public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
+			float velocityY) {
+		// TODO Auto-generated method stub
+		Log.i("TouchDetector", "FLING");
+		
+		if((e1.getX()-e2.getX())>0)
+				callnext(1);
+		if((e1.getX()-e2.getX())<0)
+				callnext(-1);
+		
+		
+		return false;
+	}
+
+	public boolean onDown(MotionEvent e) {
+		// TODO Auto-generated method stub
+		Log.i("TouchDetector", "DOWN");
+		return false;
+	}
+
+	public void onLongPress(MotionEvent e) {
+		// TODO Auto-generated method stub
+		Log.i("TouchDetector", "LongPress");
+		
+	}
+
+	public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX,
+			float distanceY) {
+		// TODO Auto-generated method stub
+		Log.i("TouchDetector", "Scroll");
+		return false;
+	}
+
+	public void onShowPress(MotionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public boolean onSingleTapUp(MotionEvent e) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	public void callnext(int n){
+		
+		Intent i = new Intent(this, EventInfoActivity.class);
+		Log.i("EventInfoActivity","CallNext");
+		i.putExtra("MajorEventId", category);
+		if(n==1)
+		{
+			if(RowNum == g.eventids[category].length-1)
+				i.putExtra("EventId", 0);
+			else
+				i.putExtra("EventId",RowNum+1);
+			
+			startActivityForResult(i, 0);
+			overridePendingTransition(R.anim.push_left_in,R.anim.push_left_out);
+		}
+		else if(n==-1)
+		{	
+			if(RowNum == 0)
+				i.putExtra("EventId", g.eventids[category].length-1);
+			else
+				i.putExtra("EventId",RowNum-1);
+			
+			startActivityForResult(i, 0);
+			overridePendingTransition(R.anim.push_right_in,R.anim.push_right_out);
+		}
 	}
 
 }
